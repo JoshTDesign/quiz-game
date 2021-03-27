@@ -1,0 +1,40 @@
+body {
+    border: 1px solid black;
+    height: 100vh;
+}
+
+main {
+    width: 500px;
+    border: 1px solid red;
+    margin: auto;
+}
+
+footer {
+    width: 500px;
+    height: 100px;
+    border: 1px solid darkgray;
+    margin: auto;
+}
+
+header {
+    width: 500px;
+    margin: auto;
+    border: 1px solid red;
+}
+
+.viewScores {     /*button elements must be a assigned a class rather than id*/
+    margin: auto;
+    display: block;
+}
+
+#timer {
+    width:100px;
+    border: 1px solid lightblue;
+    display: block;
+    margin: auto;
+}
+
+#gamePage {
+    height: 300px;
+}
+
