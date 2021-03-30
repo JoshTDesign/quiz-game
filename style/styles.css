@@ -1,30 +1,149 @@
+:root {
+    /* color Palette */
+    --ltBlue: #dfedef;
+    --blueGrad: linear-gradient(#DBFBFF, #75b1b8);
+    --dkBlueGrad: linear-gradient(#75b1b8, #408d96);
+    --gray: #575757;
+    --dkBlue: #75b1b8;
+    --orange: #ff5530;
+    --corners: border-radius: 36px;
+    --buttonCorners: border-radius: 20px;
+}
+
 body {
-    border: 1px solid black;
     height: 100vh;
-}
-
-main {
-    width: 500px;
-    border: 1px solid red;
-    margin: auto;
-}
-
-footer {
-    width: 500px;
-    height: 100px;
-    border: 1px solid darkgray;
-    margin: auto;
+    background-color: var(--ltBlue);
 }
 
 header {
-    width: 500px;
+    width: 100%;
+    height:200px;
     margin: auto;
-    border: 1px solid red;
+    background-image: var(--blueGrad);
+    border-radius: 36px 36px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
 }
+
+main {
+    width: 450px;
+    height: 450px;
+    background: white;
+    margin: auto;
+    padding: 25px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+footer {
+    width: 450px;
+    height: 100px;
+    margin: auto;
+    background: white;
+    border-radius: 0 0 36px 36px;
+    border-top: .1em solid var(--ltBlue);
+    padding: 25px;
+}
+
 
 .viewScores {     /*button elements must be a assigned a class rather than id*/
     margin: auto;
     display: block;
+}
+
+#headContainer {
+    width: 450px;
+    height: 100px;
+    background-color:var(--ltBlue);
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: auto;
+}
+
+header h1 {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-weight: 100;
+    color: #053F45;
+    font-size: 200%;
+    letter-spacing: .07em;
+    text-align: center;
+    margin-top: 38px;
+}
+
+header h2 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    color: var(--orange);
+    font-size: 2em;
+    vertical-align: middle;
+    text-align: center;
+    margin: 20px;
+}
+
+header h4 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    color: var(--orange);
+    font-size: 1em;
+    vertical-align: middle;
+    text-align: center;
+    margin: 39px;
+}
+
+span {
+    display: block;
+    text-transform: uppercase;
+    font-size: .5em;
+    letter-spacing: .09em;
+    line-height: 2em;
+    font-weight: 500;
+}
+
+div #start {
+    margin: auto;
+    display: block;
+    padding: 15px;
+    margin-bottom: 40px;
+    background-image: var(--dkBlueGrad);
+    width: 300px;
+    border-radius: 18px;
+    border:0px;
+}
+
+div #start:hover {
+    cursor: pointer;
+}
+
+li {
+    height: 45px;
+    border: .15em solid var(--ltBlue);
+    border-radius: 18px;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--gray);
+    font-size: 1.25em;
+    padding: 15px;
+    line-height: 28px;
+    transition: background-color .5s ease;
+}
+
+li:hover {
+    background-color: var(--ltBlue);
+}
+
+#start h1 {
+    color: white;
+    font-family: 'ubuntu', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    font-size: 150%;
 }
 
 #timer {
@@ -34,7 +153,81 @@ header {
     margin: auto;
 }
 
-#gamePage {
-    height: 300px;
+.gamePage {
+    height: 400px;
 }
 
+p {
+    transition: opacity .5s ease;
+    text-align: center;
+    color: var(--orange);
+    font-family: 'ubuntu', sans-serif;
+    font-size: 1.25em;
+}
+
+main h2 {
+    padding: 20px 25px 20px 25px;
+    margin: 0px;
+    color: var(--orange);
+    line-height: 1.5;
+    font-family: 'ubuntu', sans-serif;
+    font-weight: 400;
+    height: 110px;
+}
+
+main h3 {
+    padding: 0px 25px 20px 25px;
+    margin: 0px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 200;
+    color: var(--orange);
+    line-height: 1.25;
+    transition: opacity .5s ease;
+    font-size: 180%;
+    text-align: center;
+}
+
+
+
+main p {
+    padding: 20px 25px 20px 25px;
+    margin: 0px;
+    font-family: 'Ubuntu 500', sans-serif;
+    color: var(--gray);
+    line-height: 1.25;
+}
+
+.gamePage button {
+    margin: auto;
+    display: block;
+    padding: 15px;
+    margin-bottom: 40px;
+    color: var(--orange);
+}
+
+li {
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 15px;
+    list-style-type: none;
+    text-align: center;
+    width: 100%;
+}
+
+ul {
+    align-items: center;
+    width: 100%;
+}
+
+#gameInfo {
+    display: flex;
+    align-content: space-between;
+}
+
+#topScore {
+    color: red;
+}
+
+#startOver {
+    color: red;
+}

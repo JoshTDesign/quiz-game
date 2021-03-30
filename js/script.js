@@ -96,15 +96,19 @@ startButton.addEventListener("click", function() {
 
 //begins quiz functions contains event listeners for choices buttons
 function startQuiz() {
+<<<<<<< HEAD
   
 
   while (timeLeft > 0 && thisQuiz.length > 0) {
+=======
+>>>>>>> e8fe5403e4b7be2c58a724d1bc56fb6151a1f18f
   makeQuestion();
   document.getElementById("logo").style.display = "none";
   isGameRunning = true;
   //scoreDiv.style.display = "none"; //feature to count right anwers not turned on
   //scoreDiv.textContent = score;
 
+<<<<<<< HEAD
 
   //game responsiveness
   li1.addEventListener("click", function(){
@@ -217,6 +221,129 @@ function wrongAns(){
   startQuiz();
 }
 
+=======
+
+  //game responsiveness
+  li1.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice1 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  })
+  li2.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice2 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  })
+  li3.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice3 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  })
+  li4.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice4 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  
+  })
+
+}
+
+
+//picks random question and sends it to page
+function makeQuestion() {
+  
+  //picks random question
+  currentQuestion = Math.floor(Math.random()*thisQuiz.length);
+  
+  //creates and appends question
+  var questionH2 = document.createElement("h2");
+  questionH2.textContent = thisQuiz[currentQuestion].question;
+  quizDiv.appendChild(questionH2);
+  
+  //creates and appends choices
+  choicesUl = document.createElement("ul");
+  li1 = document.createElement("li");
+  li2 = document.createElement("li");
+  li3 = document.createElement("li");
+  li4 = document.createElement("li");
+  li1.textContent = thisQuiz[currentQuestion].choice1;
+  li2.textContent = thisQuiz[currentQuestion].choice2;
+  li3.textContent = thisQuiz[currentQuestion].choice3;
+  li4.textContent = thisQuiz[currentQuestion].choice4;
+  quizDiv.appendChild(choicesUl);
+  choicesUl.appendChild(li1);
+  choicesUl.appendChild(li2);
+  choicesUl.appendChild(li3);
+  choicesUl.appendChild(li4);
+
+  //creates and displays result message after each answer
+  result = document.createElement("h3");
+  result.textContent = qResult;
+  quizDiv.appendChild(result);
+  setTimeout(function(){
+    result.style.opacity = "0";
+  }, 700);
+}
+
+//actions created upon correct answer
+function rightAns(){
+  thisQuiz.splice(currentQuestion, 1);
+  qResult = "Correct!";
+
+  // document.getElementById("result").textContent = "Correct";
+  // setTimeout(function(){
+  // document.getElementById("result").textContent = '';
+  // }, 3000);
+
+   let element = document.getElementById("quiz");
+   while (element.firstChild) {
+    element.removeChild(element.firstChild);
+   }
+  
+  if (thisQuiz.length > 0) {
+    //load next question
+  startQuiz();
+  } else {
+    //hide quiz view show final score view
+    //isGameRunning = false;
+    quizDiv.style.display = "none";
+    isGameRunning = false;
+    finalScore();
+  }
+}
+
+//actions created upon wrong answer
+function wrongAns(){
+  thisQuiz.splice(currentQuestion, 1);
+  qResult = "-5";
+  
+  if (timeLeft > 5) {
+    timeLeft = timeLeft-5;
+  } else {
+    timeLeft = 0;
+  }
+
+  let element = document.getElementById("quiz");
+   while (element.firstChild) {
+    element.removeChild(element.firstChild);
+   }  
+  if (thisQuiz.length > 0) {
+    //load next question
+  startQuiz();
+  } else {
+    //hide quiz view show final score view
+    //isGameRunning = false;
+    quizDiv.style.display = "none";
+    isGameRunning = false;
+    finalScore();
+  }
+}
+
+>>>>>>> e8fe5403e4b7be2c58a724d1bc56fb6151a1f18f
 //timer function
 function startTimer() {
   
@@ -226,6 +353,10 @@ function startTimer() {
   var timerH2 = document.createElement("h2");
   timerH2.innerHTML = timeLeft + "<span>Seconds remaining</span>";
   headDiv.appendChild(timerH2);
+<<<<<<< HEAD
+=======
+  //--------------------------------------------------------
+>>>>>>> e8fe5403e4b7be2c58a724d1bc56fb6151a1f18f
   
 
   //starts the timer----------------------------------------
