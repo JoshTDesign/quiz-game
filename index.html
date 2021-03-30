@@ -4,32 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/reset.css">
     <link rel="stylesheet" href="./style/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
     <title>Quiz Game</title>
 </head>
 <body>
-    <h1 id="id01">Old Heading</h1>
-    <!-- <script>
-        var element = document.getElementById("id01");
-        element.innerHTML = "New Heading";
-        </script> -->
 
-    <!-- Header contains timer when needed. -->
     <header>
-        <div id="timer"></div>
+        <div id="headContainer"><h1 id="logo">CODING.CHALLENGE()</h1></div>
     </header>
     
     <!-- Main contains quiz game content dynamically as needed. -->
     <main>
-        <div id="intro" class="gamePage"><h2>Quiz Challenge</h2></div>
-        <div id="quiz" class="gamePage"><h2>Question Header</h2></div>
-        <div id="finalScore" class="gamePage"><h2>All done!</h2></div>
-        <div id="leaderBoard" class="gamePage"><h2>High Scores</h2></div>
+        <div id="intro" class="gamePage">
+            <div id = "start"><h1>Let's Play</h1></div>
+            <p>Try to answer the questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!</p>
+        </div>
+        <div id="quiz" class="gamePage">
+            <div id="gameInfo"></div>
+        </div>
+        <div id="finalScore" class="gamePage">
+            <h1>Your final score was</h1>
+            <h3></h3>
+        </div>
+        <div id="leaderBoard" class="gamePage">
+            <h2>High Scores</h2>
+        </div>
     </main>
     
     <!-- Footer contains link to vew high scores -->
     <footer>
-        <button type="button" class="viewScores">View High Scores</button>
+        <h1 id="highScore"></h1>
     </footer>
     <script src="js/script.js"></script>
 
