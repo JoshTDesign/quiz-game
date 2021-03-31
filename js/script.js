@@ -278,8 +278,10 @@ function finalScore() {
 
   function renderScores() {
     var topScoresUl = document.querySelector("#topScores");
+    topScoresDiv.style.display = "block";
     topScoresUl.innerHTML = "";
     console.log(topScores.length);
+    
     for (var i = 0; i < 10; i++) {  //topScores.length
       console.log("test for loop");
       var scoreObj = topScores[i];

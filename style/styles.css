@@ -29,7 +29,7 @@ header {
 
 main {
     width: 450px;
-    height: 450px;
+    min-height: 450px;
     background: white;
     margin: auto;
     padding: 25px;
@@ -191,6 +191,20 @@ input {
 
 #finalScore {
     width: 100%;
+}
+
+#topScores {
+    width: 100%;
+}
+
+#topScores li {
+    width: 100%;
+    margin: 3px;
+    padding: 3px;
+    background-color:#eeeeee;
+    border: none;
+    height: 30px;
+    border-radius: 4px;
 }
 
 main h2 {
