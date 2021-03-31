@@ -63,6 +63,7 @@ var final;
 var qResult;
 var result;   //object that returns 'right' 'wrong' message to user
 
+
 //parts of the page
 var timerH3 = document.getElementById("timer");
 var introDiv = document.getElementById("intro");
@@ -176,9 +177,7 @@ function startQuiz() {
   isGameRunning = true;
 
   if (thisQuiz.length == 0) {
-    //finalScore();
     isGameRunning = false;
-    // timerStart();
   }
   if (timeLeft > 0 && thisQuiz.length > 0) {
   makeQuestion();
@@ -262,69 +261,92 @@ function wrongAns(){
 }
 
 //final score
-
 function finalScore() {
   
-  finalScoreDiv.style.display = "block";
-  final = document.createElement("h3");
+
+
+  console.log(topScoresArray);
+  finalScoreDiv.style.display = "block";  //add final score div to html
+  final = document.createElement("h3");   
   var scoreH3 = document.getElementById("scoreH3");
   final.textContent = timeLeft;
   scoreH3.appendChild(final);
   
-  var topScoresArr = [];
-  var initialInput = document.querySelector("#init");
-  var postItButton = document.querySelector("#postIt");
-  var myScoreObj = {initials: initialInput.value, score: timeLeft};
-  topScoresArr.push(myScoreObj);
- 
+  var initialInput = document.querySelector("#init");   //points to user initials input
+  var postItButton = document.querySelector("#postIt"); //points to user post button
 
+
+  var topScoresArray = []; //array that holds current list of scores
+  var storedScoresArray = []; //temporarily holds saved scores from local storage
+  var currentScoreObject = {};  //object that holds the users current score and initials
+  var currScoreArray = [];
+
+
+
+
+
+
+
+
+  //-----------starts scorekeeping actions------------//
+  function initScores() {
+    storedScoresArray = JSON.parse(localStorage.getItem("initScore"));
+    if(storedScoresArray !== null) {
+      topScoresArray = storedScoresArray;
+    }
+    renderScores();
+  }
+  //----------------------------------------------------//
+
+
+  //-----------saves current score to top scores array and saves to local storage----------//
+  function storeScores() {
+   // currScoreArray = [currentScoreObject];
+    topScoresArray.push(currentScoreObject);
+    localStorage.setItem("initScore", JSON.stringify(topScoresArray));
+  }
+  //------------------------------------------------------------------------------------------//
+
+
+  //--------------puts updated score list on page-----------//
   function renderScores() {
     var topScoresUl = document.querySelector("#topScores");
     topScoresDiv.style.display = "block";
     topScoresUl.innerHTML = "";
-
-    console.log(topScoresArr);
-    console.log(myScoreObj);
-
+  
     
-    for (var i = 0; i < 10; i++) {  //topScores.length
-      console.log("test for loop");
-      var scoreObj = topScoresArr[i];
-      console.log(topScoresArr[i]);
+    for (var i = 0; i < topScoresArray.length; i++) {  //topScores.length
+      var scoreObj = topScoresArray[i];
+      console.log(topScoresArray[i]);
       var li = document.createElement('li');
-      li.textContent = scoreObj;
+      if (scoreObj) {
+        li.textContent = JSON.stringify(scoreObj);
+      };
       topScoresUl.appendChild(li);
     }
   } 
+//-------------------------------------------------------------//
 
-  function initScores() {
-    console.log("run initScore")
-    var storedScores = JSON.parse(localStorage.getItem("topScores"));
-    if (storedScores !== null) {
-      topScoresArr = storedScores;
-    }
-    renderScores();
-  }
 
-  function storeScores() {
-    console.log("run storeScore")
-    localStorage.setItem("topScores", JSON.stringify(topScoresArr));
-  }
 
   postItButton.addEventListener("click", function(event) {
     event.preventDefault();
-    var initialScore = {
+    currScoreArray = [{
       initials: initialInput.value.trim(),
       score: timeLeft
-    };
-    if (initialScore === "") {
-      return;
-    }
-    console.log(initialScore);
-    storeScores();
-    renderScores();
+    }];
 
+    var playerInit;  //holds player initials entered
+    var playerScore;  //holds player score
+
+    playerInit = initialInput.value;
+    playerScore = timeLeft;
+    currentScoreObject = {initials: playerInit, score: playerScore};
+
+    storeScores();
   })
 
   initScores();
+
 }
+
