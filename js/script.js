@@ -138,7 +138,7 @@ function startTimer() {
   
 
   //sets the start time of the clock and displays the clock
-  timeLeft = thisQuiz.length*5;  
+  timeLeft = thisQuiz.length*5;  //adjust the multiplier for a harder game
   var timerH2 = document.createElement("h2");
   timerH2.innerHTML = timeLeft + "<span>Seconds remaining</span>";
   headDiv.appendChild(timerH2);
@@ -271,21 +271,26 @@ function finalScore() {
   final.textContent = timeLeft;
   scoreH3.appendChild(final);
   
-  var topScores = [];
+  var topScoresArr = [];
   var initialInput = document.querySelector("#init");
   var postItButton = document.querySelector("#postIt");
-
+  var myScoreObj = {initials: initialInput.value, score: timeLeft};
+  topScoresArr.push(myScoreObj);
+ 
 
   function renderScores() {
     var topScoresUl = document.querySelector("#topScores");
     topScoresDiv.style.display = "block";
     topScoresUl.innerHTML = "";
-    console.log(topScores.length);
+
+    console.log(topScoresArr);
+    console.log(myScoreObj);
+
     
     for (var i = 0; i < 10; i++) {  //topScores.length
       console.log("test for loop");
-      var scoreObj = topScores[i];
-      console.log(scoreObj);
+      var scoreObj = topScoresArr[i];
+      console.log(topScoresArr[i]);
       var li = document.createElement('li');
       li.textContent = scoreObj;
       topScoresUl.appendChild(li);
@@ -296,14 +301,14 @@ function finalScore() {
     console.log("run initScore")
     var storedScores = JSON.parse(localStorage.getItem("topScores"));
     if (storedScores !== null) {
-      topScores = storedScores;
+      topScoresArr = storedScores;
     }
     renderScores();
   }
 
   function storeScores() {
     console.log("run storeScore")
-    localStorage.setItem("topScores", JSON.stringify(topScores));
+    localStorage.setItem("topScores", JSON.stringify(topScoresArr));
   }
 
   postItButton.addEventListener("click", function(event) {
