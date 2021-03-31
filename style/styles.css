@@ -165,6 +165,34 @@ p {
     font-size: 1.25em;
 }
 
+#finalScore h1 {
+    font-family: 'ubuntu', sans-serif;
+    font-size: 120%;
+    font-weight: 300;
+    color: var(--orange);
+    text-align: center;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    text-align: center;
+}
+
+#finalScore {
+    width: 100%;
+}
+
 main h2 {
     padding: 20px 25px 20px 25px;
     margin: 0px;

@@ -48,7 +48,7 @@ var codingQuiz = [{
 //useful global variables
 var ranNum = Math.floor(Math.random()*25); //between 0 and 25
 var thisQuiz = codingQuiz;
-var timeLeft;
+var timeLeft = 25;
 var score = 0;
 
 //current quiz items
@@ -68,7 +68,8 @@ var timerH3 = document.getElementById("timer");
 var introDiv = document.getElementById("intro");
 var quizDiv = document.getElementById("quiz");
 var finalScoreDiv = document.getElementById("finalScore");
-var leaderBoardDiv = document.getElementById("leaderBoard");
+var finalScoreH1 = document.getElementById("finalScoreH1");
+var topScoresDiv = document.getElementById("topScores");
 // var scoreDiv = document.getElementById("score");
 var headDiv = document.getElementById("headContainer");
 
@@ -81,7 +82,7 @@ introDiv.style.display = "block"
 headDiv.style.display = "block"
 quizDiv.style.display = "none"
 finalScoreDiv.style.display = "none"
-leaderBoardDiv.style.display = "none"
+topScoresDiv.style.display = "none"
 //scoreDiv.style.display = "none"
 
 
@@ -91,55 +92,10 @@ startButton.addEventListener("click", function() {
   startTimer();
   introDiv.style.display = "none";
   quizDiv.style.display = "block";
+  document.getElementById("logo").style.display = "none";
+
   //timerH3.style.display = "block";
 })
-
-//begins quiz functions contains event listeners for choices buttons
-function startQuiz() {
-<<<<<<< HEAD
-  
-
-  while (timeLeft > 0 && thisQuiz.length > 0) {
-=======
->>>>>>> e8fe5403e4b7be2c58a724d1bc56fb6151a1f18f
-  makeQuestion();
-  document.getElementById("logo").style.display = "none";
-  isGameRunning = true;
-  //scoreDiv.style.display = "none"; //feature to count right anwers not turned on
-  //scoreDiv.textContent = score;
-
-<<<<<<< HEAD
-
-  //game responsiveness
-  li1.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice1 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  })
-  li2.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice2 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  })
-  li3.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice3 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  })
-  li4.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice4 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  
-  })
-  }
-  finalScore();
-}
-
 
 //picks random question and sends it to page
 function makeQuestion() {
@@ -175,6 +131,90 @@ function makeQuestion() {
   setTimeout(function(){
     result.style.opacity = "0";
   }, 700);
+}
+
+//timer function
+function startTimer() {
+  
+
+  //sets the start time of the clock and displays the clock
+  timeLeft = thisQuiz.length*5;  
+  var timerH2 = document.createElement("h2");
+  timerH2.innerHTML = timeLeft + "<span>Seconds remaining</span>";
+  headDiv.appendChild(timerH2);
+  
+
+  //starts the timer----------------------------------------
+  var timer = setInterval(function () {
+        timerH2.innerHTML = timeLeft + "<span>Seconds remaining</span>";
+        timeLeft--;
+
+      if (isGameRunning == false) {
+        clearInterval(timer);
+        quizDiv.style.display = "none";
+        timerH2.innerHTML = "<h4>Game Over!</h4>";
+
+
+      } else if(timeLeft < 0){
+        clearInterval(timer);
+        timeLeft = 0;
+        quizDiv.style.display = "none";
+        timerH2.innerHTML = "<h4>Game Over!</h4>";
+        finalScore();
+        console.log('run final score');
+        if (isGameRunning = true) {
+          ifGameRunning = false;
+        };
+      }
+    }, 1000); //sets speed of timer in ms
+  //--------------------------------------------------------
+
+}
+
+//begins quiz functions contains event listeners for choices buttons
+function startQuiz() {
+  isGameRunning = true;
+
+  if (thisQuiz.length == 0) {
+    //finalScore();
+    isGameRunning = false;
+    // timerStart();
+  }
+  if (timeLeft > 0 && thisQuiz.length > 0) {
+  makeQuestion();
+  //scoreDiv.style.display = "none"; //feature to count right anwers not turned on
+  //scoreDiv.textContent = score;
+
+
+  //game responsiveness
+  li1.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice1 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  })
+  li2.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice2 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  })
+  li3.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice3 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  })
+  li4.addEventListener("click", function(){
+    if (thisQuiz[currentQuestion].choice4 === thisQuiz[currentQuestion].answer) {
+      rightAns();    
+    } else {
+      wrongAns(); 
+    }  
+  })
+  } else {
+  finalScore();
+  }
 }
 
 //if answer is right
@@ -221,225 +261,63 @@ function wrongAns(){
   startQuiz();
 }
 
-=======
-
-  //game responsiveness
-  li1.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice1 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  })
-  li2.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice2 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  })
-  li3.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice3 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  })
-  li4.addEventListener("click", function(){
-    if (thisQuiz[currentQuestion].choice4 === thisQuiz[currentQuestion].answer) {
-      rightAns();    
-    } else {
-      wrongAns(); 
-    }  
-  })
-
-}
-
-
-//picks random question and sends it to page
-function makeQuestion() {
-  
-  //picks random question
-  currentQuestion = Math.floor(Math.random()*thisQuiz.length);
-  
-  //creates and appends question
-  var questionH2 = document.createElement("h2");
-  questionH2.textContent = thisQuiz[currentQuestion].question;
-  quizDiv.appendChild(questionH2);
-  
-  //creates and appends choices
-  choicesUl = document.createElement("ul");
-  li1 = document.createElement("li");
-  li2 = document.createElement("li");
-  li3 = document.createElement("li");
-  li4 = document.createElement("li");
-  li1.textContent = thisQuiz[currentQuestion].choice1;
-  li2.textContent = thisQuiz[currentQuestion].choice2;
-  li3.textContent = thisQuiz[currentQuestion].choice3;
-  li4.textContent = thisQuiz[currentQuestion].choice4;
-  quizDiv.appendChild(choicesUl);
-  choicesUl.appendChild(li1);
-  choicesUl.appendChild(li2);
-  choicesUl.appendChild(li3);
-  choicesUl.appendChild(li4);
-
-  //creates and displays result message after each answer
-  result = document.createElement("h3");
-  result.textContent = qResult;
-  quizDiv.appendChild(result);
-  setTimeout(function(){
-    result.style.opacity = "0";
-  }, 700);
-}
-
-//actions created upon correct answer
-function rightAns(){
-  thisQuiz.splice(currentQuestion, 1);
-  qResult = "Correct!";
-
-  // document.getElementById("result").textContent = "Correct";
-  // setTimeout(function(){
-  // document.getElementById("result").textContent = '';
-  // }, 3000);
-
-   let element = document.getElementById("quiz");
-   while (element.firstChild) {
-    element.removeChild(element.firstChild);
-   }
-  
-  if (thisQuiz.length > 0) {
-    //load next question
-  startQuiz();
-  } else {
-    //hide quiz view show final score view
-    //isGameRunning = false;
-    quizDiv.style.display = "none";
-    isGameRunning = false;
-    finalScore();
-  }
-}
-
-//actions created upon wrong answer
-function wrongAns(){
-  thisQuiz.splice(currentQuestion, 1);
-  qResult = "-5";
-  
-  if (timeLeft > 5) {
-    timeLeft = timeLeft-5;
-  } else {
-    timeLeft = 0;
-  }
-
-  let element = document.getElementById("quiz");
-   while (element.firstChild) {
-    element.removeChild(element.firstChild);
-   }  
-  if (thisQuiz.length > 0) {
-    //load next question
-  startQuiz();
-  } else {
-    //hide quiz view show final score view
-    //isGameRunning = false;
-    quizDiv.style.display = "none";
-    isGameRunning = false;
-    finalScore();
-  }
-}
-
->>>>>>> e8fe5403e4b7be2c58a724d1bc56fb6151a1f18f
-//timer function
-function startTimer() {
-  
-
-  //sets the start time of the clock and displays the clock
-  timeLeft = thisQuiz.length*5;  
-  var timerH2 = document.createElement("h2");
-  timerH2.innerHTML = timeLeft + "<span>Seconds remaining</span>";
-  headDiv.appendChild(timerH2);
-<<<<<<< HEAD
-=======
-  //--------------------------------------------------------
->>>>>>> e8fe5403e4b7be2c58a724d1bc56fb6151a1f18f
-  
-
-  //starts the timer----------------------------------------
-  var timer = setInterval(function () {
-        timerH2.innerHTML = timeLeft + "<span>Seconds remaining</span>";
-        timeLeft--;
-
-      if (isGameRunning == false) {
-        clearInterval(timer);
-        quizDiv.style.display = "none";
-        timerH2.innerHTML = "<h4>Game Over!</h4>";
-        if (isGameRunning = true) {
-          //finalScore();
-          ifGameRunning = false;
-        };
-
-      } else if(timeLeft < 0){
-        clearInterval(timer);
-        timeLeft = 0;
-        quizDiv.style.display = "none";
-        timerH2.innerHTML = "<h4>Game Over!</h4>";
-        if (isGameRunning = true) {
-          //finalScore();
-          ifGameRunning = false;
-        };
-      }
-    }, 1000); //sets speed of timer in ms
-  //--------------------------------------------------------
-
-}
-
-
-
 //final score
+
 function finalScore() {
+  
   finalScoreDiv.style.display = "block";
   final = document.createElement("h3");
-    final.textContent = timeLeft;
-    finalScoreDiv.appendChild(final);
+  var scoreH3 = document.getElementById("scoreH3");
+  final.textContent = timeLeft;
+  scoreH3.appendChild(final);
+  
+  var topScores = [];
+  var initialInput = document.querySelector("#init");
+  var postItButton = document.querySelector("#postIt");
 
-//add initial box
 
+  function renderScores() {
+    var topScoresUl = document.querySelector("#topScores");
+    topScoresUl.innerHTML = "";
+    console.log(topScores.length);
+    for (var i = 0; i < 10; i++) {  //topScores.length
+      console.log("test for loop");
+      var scoreObj = topScores[i];
+      console.log(scoreObj);
+      var li = document.createElement('li');
+      li.textContent = scoreObj;
+      topScoresUl.appendChild(li);
+    }
+  } 
+
+  function initScores() {
+    console.log("run initScore")
+    var storedScores = JSON.parse(localStorage.getItem("topScores"));
+    if (storedScores !== null) {
+      topScores = storedScores;
+    }
+    renderScores();
+  }
+
+  function storeScores() {
+    console.log("run storeScore")
+    localStorage.setItem("topScores", JSON.stringify(topScores));
+  }
+
+  postItButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    var initialScore = {
+      initials: initialInput.value.trim(),
+      score: timeLeft
+    };
+    if (initialScore === "") {
+      return;
+    }
+    console.log(initialScore);
+    storeScores();
+    renderScores();
+
+  })
+
+  initScores();
 }
-
-//leader board function
-function leaderBoard() {
-  //creates and appends choices
-  choicesUl = document.createElement("ul");
-  li1 = document.createElement("li");
-  li2 = document.createElement("li");
-  li3 = document.createElement("li");
-  li4 = document.createElement("li");
-  li1.textContent = thisQuiz[currentQuestion].choice1;
-  li2.textContent = thisQuiz[currentQuestion].choice2;
-  li3.textContent = thisQuiz[currentQuestion].choice3;
-  li4.textContent = thisQuiz[currentQuestion].choice4;
-  quizDiv.appendChild(choicesUl);
-  choicesUl.appendChild(li1);
-  choicesUl.appendChild(li2);
-  choicesUl.appendChild(li3);
-  choicesUl.appendChild(li4);
-}
-
-
-
-
-
-  //governs the function of the timer starting and stopping
-//   var timer = setInterval(function () {
-//     if (timeLeft > 0 && isGameRunning == true) {
-//       timerH2.innerHTML = timeLeft + "<span>Seconds remaining</span>";
-//       timeLeft--;
-//     } else if (timeLeft === 0){
-//       timerH2.innerHTML = "<h4>Time's Up!</h4>";
-//       clearInterval(timer);
-//       quizDiv.style.display = "none";
-//       console.log("time = 0");
-//       finalScore();
-//     } else {
-//       timerH2.innerHTML = "<h4>Game Over!</h4>";
-//       clearInterval(timer);
-//       console.log("time = 0");
-//       finalScore();
-//     }
-//   }, 1000); //sets speed of timer in ms
-// }

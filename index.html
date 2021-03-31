@@ -29,9 +29,23 @@
         </div>
         <div id="finalScore" class="gamePage">
             <h1>Your final score was</h1>
-            <h3></h3>
+            <h3 id="scoreH3"></h3>
+            <form method="POST">
+                <div class="input-group">
+                  <label for="initials">Enter your initials</label><br>
+                  <input type="text" name="init" id="init" placeholder="Place your initials here" />
+                </div>
+                <div id="msg"></div>
+                <button id="postIt">Post It!</button>
+            </form>
+            <div class="leaderBoard">
+                <h2>Top Scores:</h2>
+                <ul id="leaders">
+
+                </ul>
+              </div>
         </div>
-        <div id="leaderBoard" class="gamePage">
+        <div id="topScores" class="gamePage">
             <h2>High Scores</h2>
         </div>
     </main>
