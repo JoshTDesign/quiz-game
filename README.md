@@ -14,7 +14,6 @@ The length of the array also automatically adjusts the length of time available 
 If the game is too easy, change the variable in the timer function to set less time and make the game a little bit harder.:)
 
 ## Screenshots
-
-https://github.com/JoshTDesign/quiz-game/blob/main/assets/Screenshot3.PNG
-https://github.com/JoshTDesign/quiz-game/blob/main/assets/Screenshot2.PNG
-https://github.com/JoshTDesign/quiz-game/blob/main/assets/Screenshot1.PNG
+![alt text](assets/Screenshot1.png)
+![alt text](assets/Screenshot2.png)
+![alt text](assets/Screenshot3.png)
